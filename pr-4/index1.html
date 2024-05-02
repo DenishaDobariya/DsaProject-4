@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Stack {
+            constructor(limit) {
+                this.q1 = [];
+                this.limit = limit || 5;
+            }
+            push(ele) {
+                if (this.q1.length === this.limit) {
+                    console.log("Stack is full");
+                } else {
+                    this.q1.push(ele);
+                }
+            }
+            pop() {
+                if (this.q1.length == 0) {
+                    console.log("Stack is empty");
+                } else {
+                    this.q1.pop();
+                }
+            }
+            peek() {
+                if (this.q1.length == 0) {
+                    console.log("Stack is empty");
+                } else {
+                    return this.q1[this.q1.length - 1];
+                }
+            }
+            isEmpty() {
+                if (this.q1.length == 0) {
+                    console.log("Empty stack");
+                } else {
+                    console.log("Not empty stack");
+                }
+            }
+            isFull() {
+                if (this.q1.length == this.limit) {
+                    console.log("Stack is full");
+                } else {
+                    console.log("Stack is not full");
+                }
+            }
+            reverse() {
+                if (this.q1.length === 0) {
+                    console.log("Stack is empty");
+                    return;
+                }
+
+                let q2 = [];
+
+                while (this.q1.length > 0) {
+                    q2.push(this.q1.pop());
+                }
+
+                while (q2.length > 0) {
+                    this.q1.push(q2.shift());
+                }
+            }
+        }
+
+        let st = new Stack();
+        st.push(10);
+        st.push(20);
+        st.push(30);
+        st.push(40);
+        console.log("Stack before reversing:", st.q1);
+        st.reverse();
+        console.log("Stack after reversing:", st.q1);
+
+    </script>
+</body>
+</html>
